@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космічна Галерея ArtVibe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Космічна Галерея ArtVibe</h1>
+        <p>Відкрийте мистецтво з усієї галактики</p>
+        <nav>
+            <a href="#home">Головна</a>
+            <button id="cart-toggle">Кошик (<span id="cart-count">0</span>)</button>
+            <a href="#news">Новини</a>
+        </nav>
+    </header>
+
+    <aside id="cart-aside" class="cart-aside">
+        <div class="cart-content">
+            <h2>Кошик</h2>
+            <button id="close-cart">×</button>
+            <div class="filter-panel">
+                <label for="cart-sort">Сортувати за:</label>
+                <select id="cart-sort">
+                    <option value="name-asc">Назвою (А-Я)</option>
+                    <option value="name-desc">Назвою (Я-А)</option>
+                    <option value="price-asc">Ціною (зростання)</option>
+                    <option value="price-desc">Ціною (спадання)</option>
+                </select>
+                <label for="price-range">Ціновий діапазон:</label>
+                <input type="number" id="price-min" placeholder="Мін. ціна" min="0">
+                <input type="number" id="price-max" placeholder="Макс. ціна" min="0">
+                <input type="text" id="search-keywords" placeholder="Пошук за назвою/описом">
+            </div>
+            <div class="card-container" id="cart-items"></div>
+            <div class="cart-summary">
+                <h3>Підсумок кошика</h3>
+                <div id="cart-summary"></div>
+                <button id="add-more">Додати ще товари</button>
+            </div>
+            <div class="charts">
+                <h3>Популярність товарів</h3>
+                <div class="chart-buttons">
+                    <button class="chart-btn" data-type="pie">Кругова діаграма</button>
+                    <button class="chart-btn" data-type="bar">Гістограма</button>
+                    <button class="chart-btn" data-type="line">Графік</button>
+                </div>
+                <canvas id="popularity-chart"></canvas>
+            </div>
+        </div>
+    </aside>
+
+    <div class="container" id="home">
+        <div class="filter-panel">
+            <label for="category">Фільтр за категорією:</label>
+            <select id="category">
+                <option value="all">Усі зірки</option>
+                <option value="abstract">Абстрактні туманності</option>
+                <option value="landscape">Космічні пейзажі</option>
+                <option value="portrait">Зоряні портрети</option>
+            </select>
+        </div>
+        <div class="card-container" id="card-container"></div>
+    </div>
+
+    <div class="container hidden" id="product">
+        <div class="product-page" id="product-page"></div>
+    </div>
+
+    <div class="container hidden" id="news">
+        <h2>Новини галереї</h2>
+        <div class="news-layout">
+            <div class="news-sidebar" id="news-sidebar"></div>
+            <div class="news-content" id="news-content">
+                <p>Виберіть новину для перегляду</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscription Modal -->
+    <div class="modal" id="subscription-modal">
+        <div class="modal-content">
+            <h2>Приєднайтесь до космічної розсилки!</h2>
+            <p>Отримуйте зоряні оновлення про нові картини.</p>
+            <button id="subscribe-btn">Стати зіркою</button>
+            <button id="decline-btn">Відплисти геть</button>
+        </div>
+    </div>
+
+    <!-- Advertisement Modal -->
+    <div class="modal" id="ad-modal">
+        <div class="modal-content">
+            <h2>Галактичний розпродаж!</h2>
+            <p>Знижка 20% на всі картини цього тижня!</p>
+            <p>Закриється через: <span id="countdown">5</span>с</p>
+            <button id="close-ad-btn" disabled>Закрити портал</button>
+        </div>
+    </div>
+
+    <button id="back-to-top" class="back-to-top hidden">↑ Вгору</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
